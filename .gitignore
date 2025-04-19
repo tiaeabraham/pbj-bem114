@@ -1,3 +1,7 @@
 .venv
 .DS_Store
+<<<<<<< HEAD
 crsp_1926_2020.csv
+=======
+crsp_1926_2020.csv
+>>>>>>> 9d6c24f00971d9f561ce5910421dfdbbefd2e198
