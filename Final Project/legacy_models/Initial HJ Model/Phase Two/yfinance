@@ -1,0 +1,104 @@
+'''
+Errors that occured while running:
+
+AILEW: Period '1mo' is invalid, must be one of ['1d', '5d']
+AISPW: Period '1mo' is invalid, must be one of ['1d', '5d']
+ALAB: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+AOGOW: Period '1mo' is invalid, must be one of ['1d', '5d']
+APCXW: Period '1mo' is invalid, must be one of ['1d', '5d']
+ARBEW: Period '1mo' is invalid, must be one of ['1d', '5d']
+AUROW: Period '1mo' is invalid, must be one of ['1d', '5d']
+AUUDW: Period '1mo' is invalid, must be one of ['1d', '5d']
+AVPTW: Period '1mo' is invalid, must be one of ['1d', '5d']
+BNAI: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+BNAIW: Period '1mo' is invalid, must be one of ['1d', '5d']
+BNZIW: Period '1mo' is invalid, must be one of ['1d', '5d']
+CLBTW: Period '1mo' is invalid, must be one of ['1d', '5d']
+CSLRW: Period '1mo' is invalid, must be one of ['1d', '5d']
+CXAIW: Period '1mo' is invalid, must be one of ['1d', '5d']
+DJTWW: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+DTSTW: Period '1mo' is invalid, must be one of ['1d', '5d']
+ECXWW: Period '1mo' is invalid, must be one of ['1d', '5d']
+EVLVW: Period '1mo' is invalid, must be one of ['1d', '5d']
+FAAS: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+FAASW: Period '1mo' is invalid, must be one of ['1d', '5d']
+GRDI: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+GRDIW: Period '1mo' is invalid, must be one of ['1d', '5d']
+GROMW: Period '1mo' is invalid, must be one of ['1d', '5d']
+GRRRW: Period '1mo' is invalid, must be one of ['1d', '5d']
+GRYP: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+GSMGW: Period '1mo' is invalid, must be one of ['1d', '5d']
+HOLOW: Period '1mo' is invalid, must be one of ['1d', '5d']
+IVDAW: Period '1mo' is invalid, must be one of ['1d', '5d']
+KWESW: Period '1mo' is invalid, must be one of ['1d', '5d']
+LCFYW: Period '1mo' is invalid, must be one of ['1d', '5d']
+LDTCW: Period '1mo' is invalid, must be one of ['1d', '5d']
+LFLYW: Period '1mo' is invalid, must be one of ['1d', '5d']
+LGCL: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+LIFWZ: Period '1mo' is invalid, must be one of ['1d', '5d']
+LTRYW: Period '1mo' is invalid, must be one of ['1d', '5d']
+MAPSW: Period '1mo' is invalid, must be one of ['1d', '5d']
+MFI: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+MMVWW: Period '1mo' is invalid, must be one of ['1d', '5d']
+MNDR: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+MOBXW: Period '1mo' is invalid, must be one of ['1d', '5d']
+NVNIW: Period '1mo' is invalid, must be one of ['1d', '5d']
+ONFOW: Period '1mo' is invalid, must be one of ['1d', '5d']
+OPTXW: Period '1mo' is invalid, must be one of ['1d', '5d']
+PRSTW: Period '1mo' is invalid, must be one of ['1d', '5d']
+RBRK: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+RCRTW: Period '1mo' is invalid, must be one of ['1d', '5d']
+RDDT: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+RGTIW: Period '1mo' is invalid, must be one of ['1d', '5d']
+RUMBW: Period '1mo' is invalid, must be one of ['1d', '5d']
+SAITW: Period '1mo' is invalid, must be one of ['1d', '5d']
+SATLW: Period '1mo' is invalid, must be one of ['1d', '5d']
+SHMD: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+SHMDW: Period '1mo' is invalid, must be one of ['1d', '5d']
+SMTK: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+SMXWW: Period '1mo' is invalid, must be one of ['1d', '5d']
+SOUNW: Period '1mo' is invalid, must be one of ['1d', '5d']
+SVCO: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+TBLAW: Period '1mo' is invalid, must be one of ['1d', '5d']
+TEM: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+UBXG: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+UMAC: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+VRMEW: Period '1mo' is invalid, must be one of ['1d', '5d']
+WAY: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+WETH: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+WGSWW: Period '1mo' is invalid, must be one of ['1d', '5d']
+XTIA: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+ZOOZ: Data doesn't exist for startDate = 1672549200, endDate = 1703998800
+ZOOZW: Period '1mo' is invalid, must be one of ['1d', '5d']
+'''
+
+import csv
+import datetime
+import yfinance as yf
+
+current_sector = 'Technology'
+# startDate , as per our convenience we can modify
+startDate = datetime.datetime(2023, 1, 1)
+
+# endDate , as per our convenience we can modify
+endDate = datetime.datetime(2023, 12, 31)
+
+
+def read_csv_to_list(filename):
+    data_list = []
+    with open(filename, mode='r') as file:
+        csv_reader = csv.reader(file)
+        next(csv_reader)  # Skip the header row
+        for row in csv_reader:
+            data_list.append(row[0])  # one item list
+    return data_list
+
+
+# Read the CSV file
+all_symbols = read_csv_to_list(
+    f'CSV Files/NASDAQ Symbols by Sector/nasdaq_{current_sector}_symbols.csv')
+
+for stock in all_symbols:
+    stock_data = yf.Ticker(stock)
+    stock_df = stock_data.history(start=startDate, end=endDate)
+    stock_df.to_csv(f'yfinance/{stock}.csv')

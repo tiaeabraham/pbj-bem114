@@ -1,0 +1,52 @@
+import pandas as pd
+
+# Load the Excel file from your specified file path
+file_path = '/Users/bramschork/Desktop/pswrgvwall.xlsx'
+xls = pd.ExcelFile(file_path, engine='openpyxl')
+
+# Define the sheets of interest
+sheets_of_interest = [f'Data {i}' for i in range(1, 13)]
+
+# Initialize an empty DataFrame to store the combined data
+combined_df = pd.DataFrame()
+
+# Loop through each sheet and process the data
+for sheet_name in sheets_of_interest:
+    # Read the sheet into a DataFrame
+    df = pd.read_excel(xls, sheet_name=sheet_name)
+
+    # Identify the date column and other data columns
+    date_col = df.columns[0]  # Assuming the first column is the date column
+    data_cols = df.columns[1:]  # The remaining columns are data
+
+    # Rename data columns to include the sheet name, to avoid overlap
+    df.rename(
+        columns={col: f"{sheet_name}_{col}" for col in data_cols}, inplace=True)
+
+    # Set the date column as the index
+    df.set_index(date_col, inplace=True)
+
+    # Drop rows where all data columns are NaN
+    df.dropna(how='all', subset=df.columns, inplace=True)
+
+    # Insert the source and source key rows
+    source_row = pd.DataFrame(
+        {col: sheet_name for col in df.columns}, index=['Source'])
+    source_key_row = pd.DataFrame(
+        {col: col.split('_', 1)[-1] for col in df.columns}, index=['Source Key'])
+    df = pd.concat([source_row, source_key_row, df])
+
+    # Combine with the main DataFrame, aligning on the date index
+    if combined_df.empty:
+        combined_df = df
+    else:
+        combined_df = combined_df.join(df, how='outer')
+
+# Reset the index to have the date as the first column
+combined_df.reset_index(inplace=True)
+
+# Save the combined DataFrame to a CSV file
+combined_df.to_csv(
+    '/Users/bramschork/Desktop/combined_gasoline_data.csv', index=False)
+
+print("CSV file has been created successfully!")
